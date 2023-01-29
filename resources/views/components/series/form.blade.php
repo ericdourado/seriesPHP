@@ -1,22 +1,22 @@
-<form action="{{$action}}" method="post">
+<form action="{{$action}}" method="post" >
     @csrf
 
-    @isset($nome)
+    @if($update)
         @method('PUT')
-    @endisset
+    @endif
 
     <div class="mb-3">
         <label for="nome" class="form-label">Nome:</label>
         <input 
             type="text" 
             id="nome" 
-            name="nome" 
+            name="nome"
             class="form-control" @isset($nome)value={{$nome}} @endisset
             >
     </div>
 
-    <button type="submit" class="btn btn-primary">
-        @if (isset($nome))
+    <button type="submit" class="btn btn-primary" :nome="old('nome')">
+        @if ($update)
             Alterar    
         @else
             Adicionar
