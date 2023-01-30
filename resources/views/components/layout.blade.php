@@ -21,7 +21,6 @@
         </div>
     @endif
     
-
     {{ $slot }} 
 </div>
 </body>
