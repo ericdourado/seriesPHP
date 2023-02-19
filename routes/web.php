@@ -3,7 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-
+use App\Mail\SeriesCreated;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,4 +19,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/email', function () {
+    return new SeriesCreated('Serie',1,2,3);
+});
+
+
+
+require __DIR__ . '/auth.php';

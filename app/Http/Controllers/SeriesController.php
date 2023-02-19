@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\Autenticador;
 use App\Http\Requests\SeriesFormRequest;
+use App\Mail\SeriesCreated;
 use App\Models\Serie;
 use App\Repositories\SeriesRepository;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use SplSubject;
 
 class SeriesController extends Controller
 {
@@ -30,10 +33,18 @@ class SeriesController extends Controller
     {
         return view('series.create');
     }
+
     public function store(SeriesFormRequest $request)
     {
         $serie = $this->repository->add($request);
-
+        $email = new SeriesCreated(
+            $serie->nome,
+            $serie->id,
+            $request->seasonQty,
+            $request->episodesPerSeason
+        );
+        
+        Mail::to($request->user())->send($email);
         return to_route('series.index')->with('mensagem.sucesso', "A série \"$serie->nome\" adicionada com sucesso");
     }
 
