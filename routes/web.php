@@ -19,9 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/email', function () {
-    return new SeriesCreated('Serie',1,2,3);
-});
+// Route::get('/email', function () {
+//     return new SeriesCreated('Serie',1,2,3);
+// });
 
 
 

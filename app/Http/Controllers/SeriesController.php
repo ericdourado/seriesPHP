@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SeriesCreated as EventsSeriesCreated;
 use App\Http\Middleware\Autenticador;
 use App\Http\Requests\SeriesFormRequest;
 use App\Mail\SeriesCreated;
 use App\Models\Serie;
+use App\Models\User;
 use App\Repositories\SeriesRepository;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
@@ -37,15 +39,16 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request)
     {
         $serie = $this->repository->add($request);
-        $email = new SeriesCreated(
+        $seriesCreatedEvent = new EventsSeriesCreated(
             $serie->nome,
             $serie->id,
             $request->seasonQty,
             $request->episodesPerSeason
         );
-        
-        Mail::to($request->user())->send($email);
-        return to_route('series.index')->with('mensagem.sucesso', "A série \"$serie->nome\" adicionada com sucesso");
+        event($seriesCreatedEvent);
+
+        return to_route('series.index')
+            ->with('mensagem.sucesso', "A série \"$serie->nome\" adicionada com sucesso");
     }
 
     public function destroy(Request $request, Serie $series)
