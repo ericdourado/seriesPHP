@@ -1,5 +1,11 @@
 <x-layout title="Temporadas de {{$series->nome}}">
-    <ul class="list-group">
+    <div class="text-center">
+        <img src="{{asset('storage/'. $series->cover)}}" 
+            style="height: 400px"
+            alt="Capa da série" 
+            class="img-fluid">
+        <ul class="list-group">
+    </div>
         @foreach ($seasons as $season)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="{{route('episodes.index', $season->id)}}">
