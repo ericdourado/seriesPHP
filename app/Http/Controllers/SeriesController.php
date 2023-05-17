@@ -40,7 +40,6 @@ class SeriesController extends Controller
     {
         $coverPath = $request->hasFile('cover') ? $request->file('cover')->store('series_cover', 'public') : null;
         $request->coverPath = $coverPath;
-        // dd($request);
         $serie = $this->repository->add($request);
         $seriesCreatedEvent = new EventsSeriesCreated(
             $serie->nome,

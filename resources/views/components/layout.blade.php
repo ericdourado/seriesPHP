@@ -19,8 +19,8 @@
             @endauth
             @guest
                 <a href="{{ route('login') }}">Entrar</a>
-
             @endguest
+            
         </div>
     </nav>
     <div class="container">

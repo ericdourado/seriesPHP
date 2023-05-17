@@ -21,14 +21,4 @@ class Episode extends Model
         return $this->belongsTo(Season::class);
     }
 
-    // protected function watched(): Attribute
-    // {
-    //     // return Attribute::make(
-    //     //     get: fn ($value) => ucfirst($value),
-    //     // );
-    //     return new Attribute(
-    //         get: fn($watched) => (bool)$watched,
-    //     );
-    // }
-
 }

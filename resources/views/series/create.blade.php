@@ -1,4 +1,4 @@
-<x-layout title="Nova serie " >
+<x-layout title="Nova serie" >
     <form action="{{route('series.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
