@@ -25,10 +25,14 @@ class SeriesController extends Controller
     public function index(Request $request)
     {
         
-        $series = Serie::with(['seasons'])->get();
+        $series = Serie::with(['seasons'])->paginate(5);
         $mensagemSucesso = session('mensagem.sucesso');
+        $count = 0;
 
-        return view('series.index')->with('series', $series)->with('mensagemSucesso', $mensagemSucesso);
+        return view('series.index')
+            ->with('series', $series)
+            ->with('mensagemSucesso', $mensagemSucesso)
+            ->with('count', $count);
     }
 
     public function create()

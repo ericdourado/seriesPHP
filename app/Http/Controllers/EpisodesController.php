@@ -11,9 +11,11 @@ class EpisodesController extends Controller
 {
     public function index(Season $season)
     {
+        $count = 0;
         return view('episodes.index', 
                 ['episodes'=> $season->episodes,
-                'mensagemSucesso' => session('mensagem.sucesso')
+                'mensagemSucesso' => session('mensagem.sucesso'),
+                'count'=> $count
                 ]);
     }
 

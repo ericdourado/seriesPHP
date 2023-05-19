@@ -15,7 +15,7 @@
             >
     </div>
 
-    <button type="submit" class="btn btn-primary" :nome="old('nome')">
+    <button type="submit" class="btn btn-dark btn fw-bold" :nome="old('nome')">
         @if ($update)
             Alterar    
         @else

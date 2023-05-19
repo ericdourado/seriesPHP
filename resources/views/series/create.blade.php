@@ -43,7 +43,7 @@
             </div>
         </div>
     
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary btn btn-dark fw-bold">
                 Adicionar
         </button>
     </form>

@@ -9,8 +9,8 @@
             <label for="password" class="form-label">Senha</label>
             <input type="password" name="password" id="password" class="form-control">
         </div>
-        <button class="btn btn-primary mt-3 mb-3">Salvar</button>
-        <a href="{{route('users.create')}}" class="btn btn-primary mt-3 mb-3">
+        <button class="btn btn-dark fw-bold">Salvar</button>
+        <a href="{{route('users.create')}}" class="btn btn-dark fw-bold">
             Registrar
         </a>
     </form>
